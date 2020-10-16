@@ -91,7 +91,7 @@ class ConnectFluent:
 
     def execute(self, method, url, expected_status, **kwargs):
         kwargs = kwargs or {}
-        kwargs['headers'] = get_headers(self.api_key)
+        kwargs['headers'] = get_headers(self.api_key, kwargs['headers'] if 'headers' in kwargs else None)
         self.response = requests.request(
             method,
             url,
